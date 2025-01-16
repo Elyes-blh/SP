@@ -3,70 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Stations de pompage </title>
+    <title>Tableau de Bord Dynamique</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-        h1 {
-            text-align: center;
-        }
-        .button {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 16px;
+        header {
+            background-color: #0073e6;
             color: white;
-            background-color: #0078d7;
-            text-align: left;
-            text-decoration: none;
-            border-radius: 5px;
+            text-align: center;
+            padding: 1rem 0;
         }
-        .button img {
-            height: 48px;
-            width: 48px;
-            margin-right: 10px;
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
         }
-        .button:hover {
-            background-color: #005a9e;
+        .chart-container {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+        .chart-container h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+        .controls {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .controls input {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+        .controls button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .controls button:hover {
+            background-color: #005bb5;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1> Stations de pompage </h1>
-        <a href="https://thingspeak.mathworks.com/channels/2791635" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">SPTR Ajim</a>
-        <a href="https://thingspeak.mathworks.com/channels/2791703" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">MI_SRT3 New</a>
-        <a href="https://thingspeak.mathworks.com/channels/2792378" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">Med_SPTR</a>
-        <a href="https://thingspeak.mathworks.com/channels/2791830" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">HS_SP4</a>
-        <a href="https://thingspeak.mathworks.com/channels/2784626" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">MI_SRJ4</a>
-        <a href="https://thingspeak.mathworks.com/channels/2783757" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">SR3 midoun</a>
-        <a href="https://thingspeak.mathworks.com/channels/2796053" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">SP3</a>
-        <a href="https://thingspeak.mathworks.com/channels/2783936" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">SRT5</a>
-        <a href="https://thingspeak.mathworks.com/channels/2780154" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">GA_SR9</a>
-        <a href="https://thingspeak.mathworks.com/channels/2781182" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">GA_SR4</a>
-        <a href="https://thingspeak.mathworks.com/channels/2782219" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">Zarat_SP1</a>
-        <a href="https://thingspeak.mathworks.com/channels/2782228" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">MED_SRJ2</a>
-        <a href="https://thingspeak.mathworks.com/channels/2796008" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">KER_SPE1</a>
-        <a href="https://thingspeak.mathworks.com/channels/2784680" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">SRT3</a>
-        <a href="https://thingspeak.mathworks.com/channels/2784692" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">RD6</a>
-        <a href="https://thingspeak.mathworks.com/channels/2785670" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">MI_SRT2</a>
-        <a href="https://thingspeak.mathworks.com/channels/2785177" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">RD4</a>
-        <a href="https://thingspeak.mathworks.com/channels/2764879" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">RT_SP3</a>
-        <a href="https://thingspeak.mathworks.com/channels/2764887" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">SI_SR3</a>
-        <a href="https://thingspeak.mathworks.com/channels/2764860" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">RT_SP</a>
-        <a href="https://thingspeak.mathworks.com/channels/2735740" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">Agareb Souelm</a>
-        <a href="https://thingspeak.mathworks.com/channels/2767732" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">SR3_agareb</a>
-        <a href="https://thingspeak.mathworks.com/channels/2767751" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">MA_SR2</a>
-        <a href="https://thingspeak.mathworks.com/channels/2770050" target="_blank" class="button"><img src="pump_icon.png" alt="Pump Icon">Saline</a>
+    <header>
+        <h1>Tableau de Bord Dynamique - Stations de Pompage</h1>
+    </header>
+    <div class="controls">
+        <label for="pointsInput">Intervalle d'affichage en minutes :</label>
+        <input type="number" id="pointsInput" placeholder="Entrez un intervalle (min)" min="10" value="60">
+        <button onclick="updateCharts()">Mettre à jour</button>
     </div>
+    <div class="dashboard">
+        <div class="chart-container">
+            <h2>SP SR4</h2>
+            <iframe id="chart1" src="https://thingspeak.mathworks.com/channels/2781182/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=1500&type=line"></iframe>
+        </div>
+        <div class="chart-container">
+            <h2>SP SR9</h2>
+            <iframe id="chart2" src="https://thingspeak.mathworks.com/channels/2780154/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        </div>
+        <div class="chart-container">
+            <h2>SP Zarat</h2>
+            <iframe id="chart3" src="https://thingspeak.mathworks.com/channels/2782219/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function updateCharts() {
+            const interval = document.getElementById('pointsInput').value;
+            if (interval && interval > 0) {
+                document.getElementById('chart1').src = `https://thingspeak.mathworks.com/channels/2781182/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=${interval}&type=line`;
+                document.getElementById('chart2').src = `https://thingspeak.mathworks.com/channels/2780154/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=${interval}&type=line&update=15`;
+                document.getElementById('chart3').src = `https://thingspeak.mathworks.com/channels/2782219/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=${interval}&type=line&update=15`;
+            } else {
+                alert("Veuillez entrer un intervalle d'affichage valide (en minutes) !");
+            }
+        }
+    </script>
 </body>
 </html>
